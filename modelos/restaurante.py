@@ -46,7 +46,7 @@ class Restaurante:
         if isinstance(item, ItemCardapio):
             self._cardapio.append(item)
     
-    @property
+    """ @property
     def exibir_cardapio(self):
         print(f"Cardapio do Restaurante: {self._nome}\n")
         for i,item in enumerate(self._cardapio, start=1):
@@ -55,4 +55,21 @@ class Restaurante:
                 print(mensagem_prato)
             else:
                 mensagem_bebida = f"{i}. Nome:{item._nome} | PReco: R${item._preco} | Tamanho: {item.tamanho}"
+                print(mensagem_bebida)""" 
+    @property
+    def exibir_cardapio(self):
+        print(f"Cardapio do Restaurante: {self._nome}\n")
+        for i, item in enumerate(self._cardapio, start=1):
+            if hasattr(item, "descricao"):
+                if hasattr(item, "tipo"):  # Verifica se tem o atributo tipo (sobremesa)
+                # Caso seja sobremesa
+                    mensagem_sobremesa = f"{i}. Nome:{item._nome} | Preco: R${item._preco} | Tipo: {item.tipo} | Descricao: {item.descricao} | Tamanho: {item.tamanho}"
+                    print(mensagem_sobremesa)
+                else:
+                    # Caso seja prato
+                    mensagem_prato = f"{i}. Nome:{item._nome} | Preco: R${item._preco} | Descricao: {item.descricao}"
+                    print(mensagem_prato)
+            else:
+                # Caso seja bebida
+                mensagem_bebida = f"{i}. Nome:{item._nome} | Preco: R${item._preco} | Tamanho: {item.tamanho}"
                 print(mensagem_bebida)
